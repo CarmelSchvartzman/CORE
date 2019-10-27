@@ -1,0 +1,32 @@
+///////////  CSHTML:
+
+
+@section scripts{
+
+    <script>
+    $(() => {
+
+            $('.custom-file-input').on('change', function () {
+                const sFileName = $(this)[0].value;
+                if (sFileName != null) {
+                    const iFileIndex = sFileName.split('\\').length - 1;
+                    $('.custom-file-label').html(sFileName.split('\\')[iFileIndex]);
+                }
+            });
+        })</script>
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
