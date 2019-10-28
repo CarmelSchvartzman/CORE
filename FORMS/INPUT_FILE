@@ -1,0 +1,45 @@
+///////////  CSHTML:
+
+  <div class="form-group row">
+        <label asp-for="PhotoPath" class="col-md-2 col-form-label"></label>
+
+        <div class="col-md-10 ">
+            <div class="custom-file">
+                <input asp-for="PhotoPath" class="form-control custom-file-input" />
+                <label class="custom-file-label">Choose file...</label>
+            </div>
+        </div>
+
+    </div>
+
+@section scripts{
+
+    <script>
+    $(() => {
+
+            $('.custom-file-input').on('change', function () {
+                const sFileName = $(this)[0].value;
+                if (sFileName != null) {
+                    const iFileIndex = sFileName.split('\\').length - 1;
+                    $('.custom-file-label').html(sFileName.split('\\')[iFileIndex]);
+                }
+            });
+        })</script>
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
