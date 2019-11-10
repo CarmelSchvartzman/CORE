@@ -1,0 +1,13 @@
+////  OPEN SOURCE ASPNET DOTNETCORE : https://github.com/aspnet/AspNetCore/blob/master/src/DefaultBuilder/src/WebHost.cs
+
+ .ConfigureLogging((hostingContext, logging) =>
+            {
+                logging.AddConfiguration(hostingContext.Configuration.GetSection("Logging"));
+                logging.AddConsole();
+                logging.AddDebug();
+                logging.AddEventSourceLogger();
+            }).
+            UseDefaultServiceProvider((context, options) =>
+            {
+                options.ValidateScopes = context.HostingEnvironment.IsDevelopment();
+            });
