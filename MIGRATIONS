@@ -1,0 +1,20 @@
+///////  "Package Manager Console " :
+
+Add-Migration MyMigration
+
+Update-Database
+
+OR:
+
+Remove-Migration MyMigration
+
+/////////  "Migrations" folder :
+
+namespace MVCCore.Migrations
+{
+    public partial class AddingIdentity : Migration
+    {
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            .......
+
