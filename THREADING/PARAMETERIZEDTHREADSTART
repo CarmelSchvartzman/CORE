@@ -1,0 +1,16 @@
+public void Heavy(object index)
+        {
+            int max = (int)index;
+            for (int i = 0; i < max; i++)
+            {
+                  ///////
+            }
+        }
+
+//////////// 
+object inputData = 10;
+Thread th = new Thread(new ParameterizedThreadStart(this.Heavy ));
+th.Start(inputData);
+            
+            
+            
