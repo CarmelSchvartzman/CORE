@@ -1,0 +1,35 @@
+
+ public delegate Tuple<int, bool> dCallback(int i);      // <<<<<<<<<<<<<<<<<<<<<<
+ 
+ 
+    public class HeavyLoad
+    {
+        int _target;
+        dCallback _callback;
+        public HeavyLoad(int target, dCallback callbackMethod)
+        {
+            this._target = target;
+            this._callback = callbackMethod;
+        }
+        public void HeavyMethod()
+        {
+            int sum = 0;
+            for (int i = 1; i <= _target; i++)
+            {
+                sum = sum + i;
+            }
+            var res =_callback?.Invoke(sum);      // <<<<<<<<<<<<<<<<<<<<<<
+            int k = res.Item1;
+            bool b = res.Item2;
+        }
+    }
+
+
+/////////////////  USE :
+
+object inputData = 10;
+         
+            dCallback cb = new dCallback(GetThreadOutput);        // <<<<<<<<<<<<<<<<<<<<<<
+            HeavyLoad hl = new HeavyLoad((int)inputData, cb);
+            Thread th = new Thread(new ThreadStart(hl.HeavyMethod));      // <<<<<<<<<<<<<<<<<<<<<<
+            th.Start();
