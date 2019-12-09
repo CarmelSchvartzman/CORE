@@ -1,6 +1,5 @@
 
- public delegate Tuple<int, bool> dCallback(int i);      // <<<<<<<<<<<<<<<<<<<<<<
- 
+ public delegate Tuple<int, bool> dCallback(int i);      // <<<<<<<<<<<<<<<<<<<<<< 
  
     public class HeavyLoad
     {
