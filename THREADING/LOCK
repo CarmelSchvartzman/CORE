@@ -1,0 +1,33 @@
+class Program
+    {
+        static object Obj = new object();        
+        public static int Total { get; set; }
+        public static int _Total = 0;
+      
+        static void Main(string[] args)
+        {
+            Stopwatch s =  Stopwatch.StartNew();
+            Thread t1 = new Thread(new ThreadStart(Program.Heavy));
+            Thread t2 = new Thread(new ThreadStart(Program.Heavy));
+            Thread t3 = new Thread(new ThreadStart(Program.Heavy));
+            t1.Start(); t2.Start(); t3.Start();
+            t1.Join(1000); t2.Join(1000); t3.Join(1000);             
+ 
+            Console.WriteLine($"THREADS CHILDREN FINISHED : {_Total}");           
+
+            Console.WriteLine(s.ElapsedTicks);
+        }
+
+
+        public static void Heavy()
+        {          
+            for (int i = 0; i < 1000000; i++)
+            {
+                //lock (Obj)                //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 290000 TICKS = 29 MS
+                //{                    
+                //    Total++;
+                //}
+                Interlocked.Increment(ref _Total);     //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 190000 TICKS = 19 MS
+            }           
+        }
+    }
